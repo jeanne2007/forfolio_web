@@ -1,880 +1,891 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio De Jeanne Ngbo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeanne Ngbo - Développeuse Web Junior</title>
+    
+    <!-- ===== META SEO ===== -->
+    <meta name="description" content="Portfolio de Jeanne Ngbo, développeuse web junior. Découvrez mes projets, compétences et réalisations." />
+    <meta name="keywords" content="développeuse web, portfolio, javascript, html, css, kinshasa" />
+    <meta name="author" content="Jeanne Ngbo" />
+    
+    <!-- ===== STYLES ===== -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- ===== STYLES PERSONNALISÉS ===== -->
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
-            --success-color: #10b981;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-color);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--gray-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 15px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .logo span {
-            color: var(--secondary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--dark-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding-top: 150px;
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding-right: 40px;
-        }
-
-        .hero h1 {
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            margin-top: 2rem;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .skills {
-            margin-top: 2rem;
-        }
-
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background-color: #e2e8f0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .skill-level {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 5px;
-            width: 0;
-            transition: width 1.5s ease;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img img {
-            transform: scale(1.05);
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-info h3 {
-            margin-bottom: 10px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .project-tags span {
-            background-color: #e0f2fe;
-            color: var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #cbd5e1;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 50px 0 20px;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 120px;
-            }
-            
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-            
-            .hero-btns {
-                justify-content: center;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
-            }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            
-            .nav-links li {
-                text-align: center;
-                padding: 10px 0;
-            }
-            
-            h1 {
-                font-size: 2.3rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Texte dégradé */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Effet au survol des cartes */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+        
+        /* Curseur clignotant pour l'effet machine à écrire */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Animation de chargement */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        
+        /* Dark mode scrollbar */
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6366f1;
         }
     </style>
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">Portfo<span>lio</span></a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- ============================================================ -->
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <!-- ============================================================ -->
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold gradient-text">JN</a>
+            
+            <!-- Navigation Desktop -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">À propos</a>
+                <a href="#skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Compétences</a>
+                <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Projets</a>
+                <a href="#gallery" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Galerie</a>
+                <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+            </div>
+
+            <!-- Boutons droite -->
+            <div class="flex items-center gap-4">
+                <!-- Mode sombre -->
+                <button id="darkModeToggle" class="text-xl hover:text-indigo-600 transition" aria-label="Changer le thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <!-- Menu mobile -->
+                <button id="mobileMenuBtn" class="md:hidden text-2xl hover:text-indigo-600 transition" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Menu Mobile Déroulant -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 px-6 py-4 space-y-3 text-sm font-medium border-t dark:border-gray-700">
+            <a href="#about" class="block hover:text-indigo-600 transition">À propos</a>
+            <a href="#skills" class="block hover:text-indigo-600 transition">Compétences</a>
+            <a href="#projects" class="block hover:text-indigo-600 transition">Projets</a>
+            <a href="#gallery" class="block hover:text-indigo-600 transition">Galerie</a>
+            <a href="#contact" class="block hover:text-indigo-600 transition">Contact</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Développeuse  web Junior</h1>
-                <p>Je développe des projets web innovants et performants. Passionnée par le code, l'interface utilisateur et l'apprentissage continu.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">Voir mes projets</a>
-                    <a href="#contact" class="btn btn-outline">Me contacter</a>
+    <!-- ============================================================ -->
+    <!-- ===== SECTION HERO ===== -->
+    <!-- ============================================================ -->
+    <section class="min-h-screen flex items-center pt-20 px-6">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <!-- Texte -->
+            <div>
+                <p class="text-indigo-600 dark:text-indigo-400 font-semibold mb-2">Salut, je suis</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4">
+                    Jeanne <span class="gradient-text">Ngbo</span>
+                </h1>
+                <p class="text-2xl md:text-3xl font-light mb-6">
+                    <span class="typing-effect typing-cursor"></span>
+                </p>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+                    Étudiante en L3 Science informatique, je crée des expériences web intuitives et élégantes. 
+                    Curieuse, rigoureuse et passionnée par le code.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-medium transition shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="border-2 border-indigo-600 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:text-white px-8 py-3 rounded-full font-medium transition">
+                        Me contacter
+                    </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="b.jpg" alt="Développeur web">
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Étudiante passionnée en développement web</h3>
-                    <p>Je suis une étudiante en L2  science informatique, spécialisée dans le génie informatique. J'ai travaillé sur des projets académiques et personnels allant des sites simples aux applications interactives.</p>
-                    <p>Mon approche combine curiosité, rigueur et créativité pour créer des solutions web fonctionnelles.</p>
-                    <div class="skills">
-                        <h3>Compétences techniques</h3>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>HTML/CSS</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>JavaScript</span>
-                                <span>50%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Sql</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Java</span>
-                                <span>60%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" data-level="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="À propos" style="width: 100%; border-radius: 10px; box-shadow: var(--shadow);">
+            
+            <!-- Avatar -->
+            <div class="flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-7xl text-white shadow-2xl shadow-indigo-500/30 animate-pulse">
+                    <i class="fas fa-code"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Mes projets</h2>
-            <div class="projects-grid">
-                <!-- Projet 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="images (6).jpeg" alt="Projet e-commerce">
+    <!-- ============================================================ -->
+    <!-- ===== SECTION À PROPOS ===== -->
+    <!-- ============================================================ -->
+    <section id="about" class="py-20 px-6 bg-gray-100 dark:bg-gray-800/50 fade-in">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                À propos <span class="gradient-text">de moi</span>
+            </h2>
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <p class="text-lg">
+                    Je suis une étudiante passionnée en <span class="font-semibold text-indigo-600 dark:text-indigo-400">Science informatique</span>, 
+                    spécialisée dans le développement web. J'ai travaillé sur des projets académiques et personnels 
+                    allant des sites simples aux applications interactives.
+                </p>
+                <p>
+                    Mon approche combine <span class="font-semibold">curiosité, rigueur et créativité</span> 
+                    pour créer des solutions web fonctionnelles et esthétiques.
+                </p>
+                
+                <!-- Timeline simplifiée -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                        <div class="text-3xl text-indigo-600 mb-2">🎓</div>
+                        <h3 class="font-bold">L3 Informatique</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">En cours - Université Protestant au Congo</p>
                     </div>
-                    <div class="project-info">
-                        <h3>UpcDonat</h3>
-                        <div class="project-tags">
-                            <span>Html</span>
-                            <span>classSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <p>Site humanitaire pour enfants sans‑abris. Permet aux utilisateurs de faire des dons, suivre les contributions et soutenir des initiatives locales.</p>
-                        <a href="https://jeanne2007.github.io/UpcDonat-copie/" class="btn">Voir le projet</a>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                        <div class="text-3xl text-indigo-600 mb-2">💻</div>
+                        <h3 class="font-bold">Développement Web</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">HTML, CSS, JavaScript, SQL</p>
                     </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                        <div class="text-3xl text-indigo-600 mb-2"></div>
+                        <h3 class="font-bold">Projets</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">3 projets majeurs réalisés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== SECTION COMPÉTENCES ===== -->
+    <!-- ============================================================ -->
+    <section id="skills" class="py-20 px-6 fade-in">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                Mes <span class="gradient-text">compétences</span>
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <!-- HTML/CSS -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg card-hover text-center">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-3"></i>
+                    <h3 class="font-semibold">HTML/CSS</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                        <div class="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full" style="width:95%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">100%</p>
                 </div>
                 
-                <!-- Projet 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="IMG_E7637.JPG" alt="Tableau de bord analytics">
+                <!-- JavaScript -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg card-hover text-center">
+                    <i class="fab fa-js-square text-5xl text-yellow-500 mb-3"></i>
+                    <h3 class="font-semibold">JavaScript</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-2 rounded-full" style="width:50%"></div>
                     </div>
-                    <div class="project-info">
-                        <h3>Mbokatalent</h3>
-                        <div class="project-tags">
-                            <span>Html</span>
-                            <span>Css</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <p>Site de recrutement permettant aux candidats et recruteurs de publier et postuler.</p>
-                        <a href="https://jeanne2007.github.io/mbokatalent/" class="btn">Voir le projet</a>
-                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">85%</p>
                 </div>
                 
-                <!-- Projet 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                          <img src="2026-03-04_10-23-00 - User.jpg" alt="Tableau de bord analytics">
-                  
+                <!-- SQL -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg card-hover text-center">
+                    <i class="fas fa-database text-5xl text-blue-600 mb-3"></i>
+                    <h3 class="font-semibold">SQL</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                        <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full" style="width:95%"></div>
                     </div>
-                    <div class="project-info">
-                        <h3>Logiciel de gestion pour pharmacie</h3>
-                        <div class="project-tags">
-                            <span>Html</span>
-                            <span>Css</span>
-                            <span>JavaScript</span>
-                            <span>Php</span>
-                            <span>Sql</span>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">95%</p>
+                </div>
+                
+                <!-- Java -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg card-hover text-center">
+                    <i class="fab fa-php text-5xl text-purple-600 mb-3"></i>
+                    <h3 class="font-semibold">PHP</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                        <div class="bg-gradient-to-r from-red-400 to-red-600 h-2 rounded-full" style="width:60%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">60%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== SECTION PROJETS ===== -->
+    <!-- ============================================================ -->
+    <section id="projects" class="py-20 px-6 bg-gray-100 dark:bg-gray-800/50 fade-in">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                Mes <span class="gradient-text">projets</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Projet 1 : UpcDonat -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg card-hover overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-r from-indigo-400 to-purple-500 flex items-center justify-center text-5xl text-white group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">UpcDonat</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                            Site humanitaire pour enfants sans-abris. Dons, suivi des contributions et initiatives locales.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">HTML/CSS</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">SQL</span>
                         </div>
-                        <p>Encours de développement.</p>
-                        <a href="#" class="btn">Voir le projet</a>
+                        <a href="https://jeanne2007.github.io/UpcDonat-copie/" class="inline-block text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+                            Voir le projet →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projet 2 : Mbokatalent -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg card-hover overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center text-5xl text-white group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mbokatalent</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                            Site de recrutement pour candidats et recruteurs. Publication et candidature en ligne.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">HTML/CSS</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">SQL</span>
+                        </div>
+                        <a href="https://jeanne2007.github.io/mbokatalent/" class="inline-block text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+                            Voir le projet →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projet 3 : Logiciel Pharmacie -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg card-hover overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-r from-pink-400 to-red-500 flex items-center justify-center text-5xl text-white group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Logiciel Pharmacie</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                            Logiciel de gestion de questions pour pharmacie. 
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">Java</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full">SQL</span>
+                            <span class="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-3 py-1 rounded-full">En local pour l'instant</span>
+                        </div>
+                        <a href="#" class="inline-block text-indigo-600 dark:text-indigo-400 font-medium hover:underline">
+                            Voir le projet →
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
+    <!-- ============================================================ -->
+    <!-- ===== SECTION GALERIE ===== -->
+    <!-- ============================================================ -->
+    <section id="gallery" class="py-20 px-6 fade-in">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-4">
+                Mes <span class="gradient-text">défenses de projet</span>
+            </h2>
+            <p class="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+                Découvrez mes présentations orales et mes projets académiques
+            </p>
+
+            <!-- Filtres -->
+            <div class="flex justify-center gap-3 mb-8 flex-wrap">
+                <button class="filter-btn px-6 py-2 rounded-full bg-indigo-600 text-white font-medium transition" data-filter="all">
+                    Tous
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-indigo-600 hover:text-white transition" data-filter="photo">
+                    📸 Photos
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-indigo-600 hover:text-white transition" data-filter="video">
+                    🎬 Vidéos
+                </button>
+            </div>
+
+            <!-- Grille de médias -->
+            <div class="grid md:grid-cols-3 gap-6" id="galleryGrid">
+                
+                <!-- ===== PHOTO 1 : Défense UpcDonat ===== -->
+                <div class="gallery-item photo card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+                         onclick="openModal('Défense UpcDonat - 2025', 'photo', 'assets/images/upcdonat-defense.jpg')">
+                        <img src="assets/images/upcdonat-defense.jpg" 
+                             alt="Défense UpcDonat" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <p class="text-white font-semibold text-lg">Défense UpcDonat - 2025</p>
+                            <p class="text-white/70 text-sm">📸 Cliquez pour agrandir</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PHOTO 2 : Présentation Mbokatalent ===== -->
+                <div class="gallery-item photo card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+                         onclick="openModal('Défense LgPharma - 2026', 'photo', 'assets/images/mbokatalent-defense.jpg')">
+                        <img src="assets/images/mbokatalent-defense.jpg" 
+                             alt="Présentation Mbokatalent" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <p class="text-white font-semibold text-lg">Défense Lgpharma/logiciel gestion - 2026</p>
+                            <p class="text-white/70 text-sm">📸 Cliquez pour agrandir</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PHOTO 3 : Soutenance L2 ===== -->
+                <div class="gallery-item photo card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+                         onclick="openModal('Soutenance L2 Informatique', 'photo', 'assets/images/soutenance-l2.jpeg')">
+                        <img src="assets/images/soutenance-l2.jpeg" 
+                             alt="Soutenance L2" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <p class="text-white font-semibold text-lg"> Petit pose dans l'auditoire des Science Informatique</p>
+                            <p class="text-white/70 text-sm">📸 Cliquez pour agrandir</p>
+                        </div>
+                    </div>
+                </div>
+
+               <!-- ===== VIDÉO 1 : Démo Logiciel Pharmacie (MP4) ===== -->
+<div class="gallery-item video card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+         onclick="openModal('Démo Logiciel Pharmacie - 2026', 'video', 'assets/images/j.mp4')">
+        <video src="assets/images/j.mp4" 
+               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+               muted></video>
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition">
+                <i class="fas fa-play text-3xl text-white ml-1"></i>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+            <p class="text-white font-semibold text-lg">Démo Logiciel Pharmacie - 2026</p>
+            <p class="text-white/70 text-sm">🎬 Cliquez pour lire</p>
+        </div>
+    </div>
+</div>
+
+                <!-- ===== VIDÉO 2 : Présentation UpcDonat (Locale) ===== -->
+                <div class="gallery-item video card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+                         onclick="openModal('Présentation UpcDonat', 'video', 'assets/images/upcdonat-presentation.mp4')">
+                        <video src="assets/images/upcdonat-presentation.mp4" 
+                               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                               muted></video>
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition">
+                                <i class="fas fa-play text-3xl text-white ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+                            <p class="text-white font-semibold text-lg">Présentation UpcDonat</p>
+                            <p class="text-white/70 text-sm">🎬 Cliquez pour lire</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== VIDÉO 1 : Démo Logiciel Pharmacie (MP4) ===== -->
+<div class="gallery-item video card-hover bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg">
+    <div class="relative h-64 cursor-pointer overflow-hidden group" 
+         onclick="openModal('Démo Logiciel Pharmacie - 2026', 'video', 'assets/images/pharmacie-demo.mp4')">
+        <video src="assets/images/pharmacie-demo.mp4" 
+               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+               muted></video>
+        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition">
+                <i class="fas fa-play text-3xl text-white ml-1"></i>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+            <p class="text-white font-semibold text-lg">Lgpharma-defense - 2026</p>
+            <p class="text-white/70 text-sm">🎬 Cliquez pour lire</p>
+        </div>
+    </div>
+</div>
+
+    <!-- ============================================================ -->
+    <!-- ===== SECTION CONTACT ===== -->
+    <!-- ============================================================ -->
+    <section id="contact" class="py-20 px-6 bg-gray-100 dark:bg-gray-800/50 fade-in">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-4xl font-bold text-center mb-12">
+                Contactez-<span class="gradient-text">moi</span>
+            </h2>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+                <!-- Infos de contact -->
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 text-xl">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3>Adresse</h3>
-                            <p>RDC, KINSHASA</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Localisation</p>
+                            <p class="font-medium">RDC, KINSHASA</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                    
+                    <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 text-xl">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h3>Téléphone</h3>
-                            <p>+243 0812475527</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Téléphone</p>
+                            <p class="font-medium">+243 0812475527</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                    
+                    <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center text-indigo-600 text-xl">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h3>Email</h3>
-                            <p>jeannengbo3@gmail.com</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                            <p class="font-medium">jeannengbo3@gmail.com</p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nom complet</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Adresse email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Envoyer le message</button>
-                    </form>
-                </div>
+
+                <!-- Formulaire -->
+                <form id="contactForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nom complet <span class="text-red-500">*</span></label>
+                        <input type="text" id="user_name" placeholder="Votre nom" required 
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="user_email" placeholder="Votre email" required
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Téléphone <span class="text-gray-400 text-xs">(optionnel)</span></label>
+                        <input type="tel" id="user_phone" placeholder="Votre numéro"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition" />
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Message <span class="text-red-500">*</span></label>
+                        <textarea id="message" rows="4" placeholder="Votre message" required
+                                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none transition resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn"
+                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-semibold transition disabled:opacity-50 shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40">
+                        Envoyer le message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                    
+                    <div id="formStatus" class="hidden p-4 rounded-xl"></div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo footer-logo">Portfo<span>lio</span></a>
-                <p>Développeuse web Junior  passionné par le développement , créativité pour créer des solutions web fonctionnelles .</p>
-                <div class="social-links">
-                    <a href="https://github.com/jeanne2007"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/public-profile/settings"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-codepen"></i></a>
-                </div>
-                <div class="copyright">
-                    <p>&copy;2026 Mon Portfolio. Tous droits réservés.</p>
-                </div>
+    <!-- ============================================================ -->
+    <!-- ===== FOOTER ===== -->
+    <!-- ============================================================ -->
+    <footer class="bg-gray-900 text-white py-8 px-6 text-center">
+        <div class="container mx-auto">
+            <p class="text-2xl font-bold gradient-text mb-2">JN</p>
+            <p class="text-sm text-gray-400">
+                © 2026 Jeanne Ngbo. Fait avec <i class="fas fa-heart text-red-500 animate-pulse"></i> à Kinshasa
+            </p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Navigation mobile
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        const header = document.getElementById('header');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Fermer le menu mobile au clic sur un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Header au scroll
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Animation des barres de compétences
-        function animateSkills() {
-            const skillLevels = document.querySelectorAll('.skill-level');
+    <!-- ============================================================ -->
+    <!-- ===== MODALE GALERIE ===== -->
+    <!-- ============================================================ -->
+    <div id="mediaModal" class="fixed inset-0 z-50 hidden bg-black/95 flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="relative max-w-5xl w-full bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+            <!-- Bouton fermer -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 w-10 h-10 rounded-full text-2xl z-10 transition">
+                <i class="fas fa-times"></i>
+            </button>
             
-            skillLevels.forEach(skill => {
-                const level = skill.getAttribute('data-level');
-                skill.style.width = level + '%';
-            });
+            <!-- Contenu dynamique -->
+            <div id="modalContent" class="p-6">
+                <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center" style="min-height:400px;">
+                    <i class="fas fa-image text-6xl text-gray-400"></i>
+                </div>
+                <p id="modalTitle" class="mt-4 text-xl font-bold text-gray-800 dark:text-white text-center">Titre du média</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ============================================================ -->
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // 1. CONFIGURATION EMAILJS (TES VRAIES INFORMATIONS)
+        // ═══════════════════════════════════════════════════════════════
+        
+        const EMAILJS_PUBLIC_KEY = "glmP56UUxxxbBP5fg";
+        const EMAILJS_SERVICE_ID = "service_pudarj9";
+        const EMAILJS_TEMPLATE_ID = "template_tm3isfm";
+
+        // ═══════════════════════════════════════════════════════════════
+        // 2. INITIALISATION EMAILJS
+        // ═══════════════════════════════════════════════════════════════
+        
+        (function() {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            console.log('✅ EmailJS initialisé avec succès');
+        })();
+
+        // ═══════════════════════════════════════════════════════════════
+        // 3. EFFET MACHINE À ÉCRIRE
+        // ═══════════════════════════════════════════════════════════════
+        
+        const texts = ['Développeuse web junior', 'Créatrice d\'interfaces', 'Apprentie passionnée'];
+        let count = 0, index = 0, currentText = '', letter = '';
+        const typingElement = document.querySelector('.typing-effect');
+        
+        function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            typingElement.textContent = letter;
+            if (letter.length === currentText.length) {
+                count++, index = 0;
+                setTimeout(type, 2000);
+            } else setTimeout(type, 100);
+        }
+        type();
+
+        // ═══════════════════════════════════════════════════════════════
+        // 4. MODE SOMBRE
+        // ═══════════════════════════════════════════════════════════════
+        
+        const darkToggle = document.getElementById('darkModeToggle');
+        const darkIcon = darkToggle.querySelector('i');
+        
+        // Vérifier la préférence utilisateur
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.replace('fa-moon', 'fa-sun');
         }
         
-        // Observer pour animer les compétences lorsqu'elles sont visibles
-        const aboutSection = document.getElementById('about');
-        const observerOptions = {
-            threshold: 0.5
-        };
+        darkToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                darkIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 5. MENU MOBILE
+        // ═══════════════════════════════════════════════════════════════
+        
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Fermer le menu mobile au clic sur un lien
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 6. FORMULAIRE DE CONTACT FONCTIONNEL
+        // ═══════════════════════════════════════════════════════════════
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('formStatus');
+            
+            // Désactiver le bouton
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Envoi en cours... <i class="fas fa-spinner fa-spin ml-2"></i>';
+            statusDiv.className = 'hidden';
+            
+            // Récupérer les données
+            const params = {
+                user_name: document.getElementById('user_name').value.trim(),
+                user_email: document.getElementById('user_email').value.trim(),
+                user_phone: document.getElementById('user_phone')?.value.trim() || 'Non renseigné',
+                message: document.getElementById('message').value.trim(),
+                current_date: new Date().toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }),
+                current_time: new Date().toLocaleTimeString('fr-FR', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+            
+            console.log('📤 Envoi du message...', params);
+            
+            // Envoyer l'email
+            emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                params
+            )
+            .then(function(response) {
+                console.log('✅ Message envoyé avec succès !', response);
+                statusDiv.className = 'p-4 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+                statusDiv.innerHTML = `
+                    <i class="fas fa-check-circle mr-2"></i> 
+                    ✅ Message envoyé avec succès ! Je vous répondrai rapidement.
+                `;
+                document.getElementById('contactForm').reset();
+            })
+            .catch(function(error) {
+                console.error('❌ Erreur EmailJS:', error);
+                statusDiv.className = 'p-4 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300';
+                statusDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle mr-2"></i> 
+                    ❌ Erreur lors de l'envoi. Veuillez réessayer ou m'envoyer un email directement.
+                `;
+            })
+            .finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Envoyer le message <i class="fas fa-paper-plane ml-2"></i>';
+                statusDiv.className = statusDiv.className.replace('hidden', '');
+            });
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 7. GALERIE - OUVERTURE MODALE
+        // ═══════════════════════════════════════════════════════════════
+        
+        function openModal(title, type, src) {
+            const modal = document.getElementById('mediaModal');
+            const content = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            if (type === 'video') {
+                // Vérifier si c'est un lien YouTube
+                if (src.includes('youtube.com') || src.includes('youtu.be')) {
+                    let videoId = src;
+                    if (src.includes('v=')) {
+                        videoId = src.split('v=')[1].split('&')[0];
+                    } else if (src.includes('youtu.be/')) {
+                        videoId = src.split('youtu.be/')[1].split('?')[0];
+                    }
+                    content.innerHTML = `
+                        <div class="aspect-video bg-black rounded-xl overflow-hidden">
+                            <iframe class="w-full h-full" 
+                                    src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                                    title="${title}" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    `;
+                } else {
+                    // Vidéo locale
+                    content.innerHTML = `
+                        <div class="aspect-video bg-black rounded-xl overflow-hidden">
+                            <video class="w-full h-full" controls autoplay>
+                                <source src="${src}" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                        </div>
+                    `;
+                }
+            } else {
+                // Photo
+                content.innerHTML = `
+                    <div class="rounded-xl overflow-hidden bg-black/5">
+                        <img src="${src}" alt="${title}" class="w-full max-h-[70vh] object-contain" />
+                    </div>
+                `;
+            }
+            
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // 8. FERMETURE DE LA MODALE
+        // ═══════════════════════════════════════════════════════════════
+        
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            
+            // Arrêter les vidéos
+            const iframes = document.querySelectorAll('#modalContent iframe');
+            iframes.forEach(iframe => {
+                iframe.src = iframe.src;
+            });
+            
+            const videos = document.querySelectorAll('#modalContent video');
+            videos.forEach(video => {
+                video.pause();
+            });
+        }
+
+        // Fermer avec la touche Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 9. FILTRES DE LA GALERIE
+        // ═══════════════════════════════════════════════════════════════
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Mettre à jour les boutons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-indigo-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'dark:bg-gray-700');
+                });
+                this.classList.add('bg-indigo-600', 'text-white');
+                this.classList.remove('bg-gray-200', 'dark:bg-gray-700');
+                
+                // Filtrer les éléments
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        if (item.classList.contains(filter)) {
+                            item.style.display = 'block';
+                            item.style.opacity = '1';
+                        } else {
+                            item.style.display = 'none';
+                            item.style.opacity = '0';
+                        }
+                    }
+                });
+            });
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 10. ANIMATION AU SCROLL
+        // ═══════════════════════════════════════════════════════════════
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateSkills();
+                    entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
-        
-        observer.observe(aboutSection);
-        
-        // Gestion du formulaire de contact
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Récupération des valeurs du formulaire
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Simulation d'envoi (dans un cas réel, on utiliserait fetch() vers un serveur)
-            alert(`Merci ${name} ! Votre message a été envoyé. Je vous répondrai à ${email} dès que possible.`);
-            
-            // Réinitialisation du formulaire
-            contactForm.reset();
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
         });
+
+        // ═══════════════════════════════════════════════════════════════
+        // 11. LOG DE SUCCÈS
+        // ═══════════════════════════════════════════════════════════════
         
-        // Animation des cartes de projet au survol
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
+        console.log('🚀 Portfolio chargé avec succès !');
+        console.log('📧 EmailJS configuré avec :', {
+            service: EMAILJS_SERVICE_ID,
+            template: EMAILJS_TEMPLATE_ID,
+            publicKey: EMAILJS_PUBLIC_KEY.substring(0, 10) + '...'
         });
-        
-        // Initialisation des animations au chargement de la page
-        window.addEventListener('DOMContentLoaded', () => {
-            // Animation d'apparition pour les éléments de la page
-            const fadeElements = document.querySelectorAll('.hero-content, .project-card, .contact-item, .form-group');
-            
-            fadeElements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }, 100 + index * 100);
-            });
-        });
+        console.log('📸 Galerie prête avec ' + document.querySelectorAll('.gallery-item').length + ' éléments');
     </script>
+
 </body>
 </html>
